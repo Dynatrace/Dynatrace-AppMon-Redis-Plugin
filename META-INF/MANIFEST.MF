@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.dynatrace.plugin.redis;singleton:=true
+Bundle-Name: Redis Monitor
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .,lib/jedis-2.8.1.jar
+Require-Bundle: com.dynatrace.diagnostics.sdk
+Bundle-ManifestVersion: 2
+Bundle-Vendor: Dynatrace
+

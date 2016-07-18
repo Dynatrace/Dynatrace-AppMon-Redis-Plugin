@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!-- plugin.xml file written by dynaTrace Client 6.3.0 -->
+<plugin>
+  <extension point="com.dynatrace.diagnostics.pdk.pluginconfig" id="com.dynatrace.plugin.redis" name="Redis Monitor">
+    <information>
+      <category value="" />
+      <description value="Monitor Redis" />
+      <supportlevel value="unsupported" />
+      <displayname value="Redis Monitor" />
+    </information>
+    <configuration>
+      <property key="auth" label="auth" type="string" description="My property description ..." default="" multiline="false" />
+      <property key="port" label="port" type="long" description="My property description ..." default="6379" />
+    </configuration>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitor" id="com.dynatrace.plugin.redis.monitor" name="Redis monitor">
+    <plugin configid="com.dynatrace.plugin.redis" class="com.dynatrace.plugin.redis.RedisMonitor" />
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.redis.metricgroup1" name="stats">
+    <metricgroup monitorid="com.dynatrace.plugin.redis.monitor">
+      <metric defaultrate="purepath" name="instantaneous_ops_per_sec" unit="number" description="My metric description ..." />
+    </metricgroup>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.redis.metricgroup2" name="clients">
+    <metricgroup monitorid="com.dynatrace.plugin.redis.monitor">
+      <metric defaultrate="purepath" name="connected_clients" unit="number" description="My metric description ..." />
+    </metricgroup>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.redis.metricgroup3" name="memory">
+    <metricgroup monitorid="com.dynatrace.plugin.redis.monitor">
+      <metric defaultrate="purepath" name="used_memory" unit="bytes" description="My metric description ..." />
+      <metric defaultrate="purepath" name="used_memory_peak" unit="bytes" description="My metric description ..." />
+    </metricgroup>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.redis.metricgroup4" name="replication">
+    <metricgroup monitorid="com.dynatrace.plugin.redis.monitor">
+      <metric defaultrate="purepath" name="master_last_io_seconds_ago" unit="auto" description="My metric description ..." />
+      <metric defaultrate="purepath" name="master_sync_in_progress" unit="auto" description="My metric description ..." />
+      <metric defaultrate="purepath" name="connected_slaves" unit="number" description="My metric description ..." />
+    </metricgroup>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.redis.metricgroup5" name="keyspace">
+    <metricgroup monitorid="com.dynatrace.plugin.redis.monitor">
+      <metric defaultrate="purepath" name="keys" unit="number" description="My metric description ..." />
+    </metricgroup>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.redis.metricgroup6" name="persistence">
+    <metricgroup monitorid="com.dynatrace.plugin.redis.monitor">
+      <metric defaultrate="purepath" name="rdb_last_bgsave_time_sec" unit="s" description="My metric description ..." />
+      <metric defaultrate="purepath" name="rdb_bgsave_in_progress" unit="number" description="My metric description ..." />
+      <metric defaultrate="purepath" name="rdb_changes_since_last_save" unit="number" description="My metric description ..." />
+      
+    </metricgroup>
+  </extension>
+</plugin>
